@@ -30,11 +30,6 @@ public static class Sorts{
         int[] dist = new int[0x100];
         int[] ind = new int[0x100];
 
-        for (int i = 0; i < 0x100; i++)
-        {
-            dist[i] = 0;
-        }
-
         for (int i = 0; i < input.Length; i++)
             dist[(input[i] >> e) & 0xFF ] = dist[(input[i] >> e) & 0xFF]+1;
 
@@ -55,9 +50,25 @@ public static class Sorts{
     #endregion
 
     #region BubbleSort
-    //public static int[] BubbleSort(int[] input){
-        //int[] output = new
+    public static int[] BubbleSort(int[] input){
+        int n = 0;
+        int[] output = new int[input.Length];
+        for (int i = 0; i < output.Length; i++)
+            output[i] = input[i];
 
-    //} 
+        for (int i = 0; i < output.Length-1; i++)
+        {
+            for (int j = 0; j < output.Length-i-1; j++)
+            {
+                if(output[j] > output[j+1]){
+                    n = output[j];
+                    output[j]   = output[j+1];
+                    output[j+1] = n;
+                }
+            }
+        }
+
+        return output;
+    } 
     #endregion
 }
